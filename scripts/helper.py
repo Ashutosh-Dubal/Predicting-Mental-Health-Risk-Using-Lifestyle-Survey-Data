@@ -11,4 +11,4 @@ def data_audit(df):
     print("\nDuplicates:", df.duplicated().sum())
 
     for col in df.select_dtypes(include='object'):
-        print(f"\n📌 Unique values in {col}:", df[col].dropna().unique())
+        print(f"\nUnique values in {col}:", df[col].dropna().unique())
