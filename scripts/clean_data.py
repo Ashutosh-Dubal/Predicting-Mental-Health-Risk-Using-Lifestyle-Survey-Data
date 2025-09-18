@@ -89,6 +89,32 @@ print(df.head())
 # Make sure the clean folder exists
 os.makedirs(CLEAN_DATA_PATH, exist_ok=True)
 
+# Taking the clean subset of the df
+keep_cols = ['Age', 'Country', 'state'] + list(df.columns[27:])
+df_clean = df[keep_cols].copy()
+
+# Check Age distribution
+print("Age Summary:")
+print(df_clean['Age'].describe())
+print("\nUnique Ages (lowest 10):", sorted(df_clean['Age'].unique())[:10])
+print("Unique Ages (highest 10):", sorted(df_clean['Age'].unique())[-10:])
+
+# Check for weird or extreme ages
+weird_ages = df_clean[(df_clean['Age'] < 10) | (df_clean['Age'] > 100)]
+print("\nWeird ages detected:")
+print(weird_ages[['Age']].value_counts())
+
+# Check Country values
+print("\nNumber of unique countries:", df_clean['Country'].nunique())
+print("Most common countries:\n", df_clean['Country'].value_counts().head(15))
+
+# Look for messy country names (short ones, weird ones)
+print("\nPotentially messy country entries:")
+print([c for c in df_clean['Country'].unique() if len(str(c)) <= 3])
+
+df = df[(df['Age'] >= 18) & (df['Age'] <= 100)]
+print("New shape after dropping valid ages: ", df.shape)
+
 # Save cleaned data
 df.to_csv(OUTPUT_FILE, index=False)
 
