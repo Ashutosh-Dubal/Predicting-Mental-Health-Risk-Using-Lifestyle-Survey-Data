@@ -35,25 +35,16 @@ By combining EDA with predictive modeling, this project aims to provide insights
 
 The dataset comes from the OSMI Mental Health in Tech Survey (2016), which collected responses from employees in the technology sector about their experiences with mental health.
 
-• Rows (responses): 1,251  
-  
-• Columns (features): 27 survey questions + derived cleaned features  
-
-• Key features include:  
-
-        • Demographics: Age, Gender, Country, State (US only)            
+- Rows (responses): 1,251  
+- Columns (features): 27 survey questions + derived cleaned features  
+- Key features include:
         
-        • Workplace Factors: company size, remote work, leave policies, benefits, wellness programs, anonymity  
-        
-        • Personal/Social Factors: family history of mental illness, supervisor and coworker support  
-        
-		 • Targets:  
-  
-            • treatment: whether the respondent sought treatment for mental health  
-            
-            • seek_help: whether the respondent knows about options/resources for help  
-
-The raw dataset is publicly available on [Kaggle](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey).
+  - Demographics: Age, Gender, Country, State (US only)
+  - Workplace Factors: company size, remote work, leave policies, benefits, wellness programs, anonymity
+  - Personal/Social Factors: family history of mental illness, supervisor and coworker support
+  - Targets:
+    - treatment: whether the respondent sought treatment for mental health  
+    - seek_help: whether the respondent knows about options/resources for help  
 
 ---
 
