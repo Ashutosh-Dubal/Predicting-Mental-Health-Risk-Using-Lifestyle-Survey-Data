@@ -3,31 +3,30 @@
 
 > This project is still being worked on
 
-This project explores the 2016 OSMI Mental Health in Tech Survey, a dataset that captures how employees in the technology sector perceive and respond to mental health challenges in the workplace. The goal of this project is twofold:  
+This project explores the 2014 OSMI Mental Health in Tech Survey, a dataset that captures how employees in the technology sector perceive and respond to mental health challenges in the workplace. The goal of this project is twofold:  
 
 1. Exploratory Data Analysis (EDA):  
-	• Understand demographic and workplace factors that influence mental health.  
-	• Visualize patterns across age, gender, company size, geography, and workplace policies.  
+    - Understand demographic and workplace factors that influence mental health.  
+    - Visualize patterns across age, gender, company size, geography, and workplace policies.  
   
 2. Predictive Modeling:  
-	Build machine learning models to predict whether an individual is likely to:       
-		• Seek help if they face mental health challenges.  
-		• Seek treatment for mental health conditions.  
-	Compare the influence of workplace support, personal history, and company culture on awareness versus action.  
+    Build machine learning models to predict whether an individual is likely to:
+   - Seek help if they face mental health challenges.
+   - Seek treatment for mental health conditions.  
+
+    Compare the influence of workplace support, personal history, and company culture on awareness versus action.  
   
 By combining EDA with predictive modeling, this project aims to provide insights into how workplace policies and cultural attitudes impact mental health outcomes.  
 
 ## 📚 Table of Contents  
-1. [Dataset Description]()  
-2. [Challenges & Learnings]()  
-3. [How to Install and Run the Project]()  
-4. [How to Use the Project]()  
-5. [Sample Output]()  
-6. [Key Insights & Analysis]()  
-7. [Tech Stack]()  
-8. [Project Structure]()  
-9. [Author]()  
-10. [License]()  
+1. [Dataset Description](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-dataset-description)  
+2. [Challenges & Learnings](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-challenges--learnings)
+3. [Sample Output](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-sample-output)  
+4. [Key Insights & Analysis](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-key-insights--analysis)  
+5. [Tech Stack](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-tech-stack)  
+6. [Project Structure](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-project-structure)  
+7. [Author](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#%E2%80%8D-author)  
+8. [License](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-license)  
 
 ---
 
@@ -48,15 +47,7 @@ The dataset comes from the OSMI Mental Health in Tech Survey (2016), which colle
 
 ---
 
-## 🧠 Challenges & Learnings  
-
----
-
-## 🛠️ How to Install and Run the Project
-
----
-
-## 📦 How to Use This Project
+## 🧠 Challenges & Learnings
 
 ---
 
