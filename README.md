@@ -22,11 +22,12 @@ By combining EDA with predictive modeling, this project aims to provide insights
 1. [Dataset Description](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-dataset-description)  
 2. [Challenges & Learnings](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-challenges--learnings)
 3. [Sample Output](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-sample-output)  
-4. [Key Insights & Analysis](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-key-insights--analysis)  
-5. [Tech Stack](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-tech-stack)  
-6. [Project Structure](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-project-structure)  
-7. [Author](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#%E2%80%8D-author)  
-8. [License](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-license)  
+4. [Key Insights & Analysis](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-key-insights--analysis) 
+5. [Prediction & Evaluation]()
+6. [Tech Stack](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-tech-stack)  
+7. [Project Structure](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-project-structure)  
+8. [Author](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#%E2%80%8D-author)  
+9. [License](https://github.com/Ashutosh-Dubal/Predicting-Mental-Health-Risk-Using-Lifestyle-Survey-Data?tab=readme-ov-file#-license)  
 
 ---
 
@@ -118,6 +119,40 @@ One of the central goals of this project is to understand the difference between
 | **Key Predictors**      | Supportive supervisor 👩‍💼, supportive coworkers 👥, company size 🏢. | Family history 🧬, company healthcare policies 🏥, self-employment status 💼. |
 | **Typical Barriers**    | Stigma, fear of disclosure, lack of supportive culture. | Cost, lack of insurance, limited access to professional care. |
 | **Survey Pattern**      | Higher in large companies and supportive environments. | Higher among those with family history and stable healthcare access. |
+
+> We are ignoring states since we have dont have states or provinces of other countries. Only of the US.
+
+---
+
+## 🎯 Prediction & Evaluation
+
+### First pass
+
+Below is the results of the first pass done with a Random Forrest Classifier with a 80/20 split of the data.
+
+```
+              precision    recall  f1-score   support
+
+           0       0.78      0.90      0.83       129
+           1       0.80      0.67      0.73        49
+           3       0.74      0.62      0.67        73
+
+    accuracy                           0.77       251
+   macro avg       0.77      0.73      0.75       251
+weighted avg       0.77      0.77      0.77       251
+
+Confustion Matrix:
+[[116   3  10]
+ [ 10  33   6]
+ [ 23   5  45]]
+
+```
+
+> Note: 0-No, 1-Yes, 3-Uncertain
+
+These are good baseline results especially since this dataset is small and imbalanced, but from the confusion matrix we can see that the model is better at predicting no responses than yes or uncertain.
+We can see from the table above that Yes has the highest precision, but from the confusion matrix we see 116 no responses were predicted right, 33 yes responses were predicted right and 45 Uncertain responses were predicted right.
+But the model is bias leans towards predicting "No" as it has the largest support.
 
 ---
 

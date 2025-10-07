@@ -90,8 +90,12 @@ print(df.head())
 os.makedirs(CLEAN_DATA_PATH, exist_ok=True)
 
 # Taking the clean subset of the df
-keep_cols = ['Age', 'Country', 'state'] + list(df.columns[27:])
+keep_cols = ['Age', 'Country'] + list(df.columns[27:])
 df_clean = df[keep_cols].copy()
+
+# Imputing values
+df_clean['self_employed_cleaned'] = df_clean['self_employed_cleaned'].fillna(0)
+df_clean['work_interfere_cleaned'] = df_clean['work_interfere_cleaned'].fillna(4)
 
 # Check Age distribution
 print("Age Summary:")
@@ -112,10 +116,10 @@ print("Most common countries:\n", df_clean['Country'].value_counts().head(15))
 print("\nPotentially messy country entries:")
 print([c for c in df_clean['Country'].unique() if len(str(c)) <= 3])
 
-df = df[(df['Age'] >= 18) & (df['Age'] <= 100)]
-print("New shape after dropping valid ages: ", df.shape)
+df_clean = df_clean[(df_clean['Age'] >= 18) & (df_clean['Age'] <= 100)]
+print("New shape after dropping valid ages: ", df_clean.shape)
 
 # Save cleaned data
-df.to_csv(OUTPUT_FILE, index=False)
+df_clean.to_csv(OUTPUT_FILE, index=False)
 
 print("Cleaned data saved to:", OUTPUT_FILE)
