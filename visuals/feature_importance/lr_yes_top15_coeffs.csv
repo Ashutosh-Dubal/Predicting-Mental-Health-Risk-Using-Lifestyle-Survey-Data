@@ -1,0 +1,16 @@
+Feature,Pretty,Coefficient,Abs_Coefficient
+cat__wellness_program_cleaned_1,wellness_program_cleaned = 1,1.652535437040634,1.652535437040634
+cat__mental_health_consequence_cleaned_1,mental_health_consequence_cleaned = 1,-0.7759101016895209,0.7759101016895209
+cat__phys_health_consequence_cleaned_1,phys_health_consequence_cleaned = 1,0.7391727224493825,0.7391727224493825
+cat__care_options_cleaned_1,care_options_cleaned = 1,0.7132089040631271,0.7132089040631271
+cat__benefits_cleaned_1,benefits_cleaned = 1,0.6273813656181038,0.6273813656181038
+cat__mental_vs_physical_cleaned_1,mental_vs_physical_cleaned = 1,0.48440941402151316,0.48440941402151316
+cat__mental_health_consequence_cleaned_3,mental_health_consequence_cleaned = 3,-0.4727334961742324,0.4727334961742324
+cat__benefits_cleaned_3,benefits_cleaned = 3,-0.47078885744655685,0.47078885744655685
+cat__care_options_cleaned_3,care_options_cleaned = 3,0.46897501830644356,0.46897501830644356
+cat__anonymity_cleaned_3,anonymity_cleaned = 3,-0.4210159285533533,0.4210159285533533
+cat__mental_health_interview_cleaned_1,mental_health_interview_cleaned = 1,0.36234505553403923,0.36234505553403923
+cat__wellness_program_cleaned_3,wellness_program_cleaned = 3,0.33880125234044983,0.33880125234044983
+cat__work_interfere_cleaned_1.0,work_interfere_cleaned = 1.0,0.33458177785366444,0.33458177785366444
+cat__leave_cleaned_2,leave_cleaned = 2,0.27597201051337,0.27597201051337
+cat__obs_consequence_cleaned_1,obs_consequence_cleaned = 1,0.2616958821742559,0.2616958821742559

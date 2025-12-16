@@ -8,20 +8,27 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from xgboost import XGBClassifier
+from sklearn.naive_bayes import CategoricalNB
+from sklearn.ensemble import VotingClassifier
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as ImbPipeline
 from sklearn.metrics import classification_report, confusion_matrix
+from helper import extract_estimator_with_attr
+
+save_folder = "visuals/model_training"
+os.makedirs(save_folder, exist_ok=True)
 
 # LOADING DATA
 
 CLEAN_DATA_PATH = "data/clean/survey.csv"
 df = pd.read_csv(CLEAN_DATA_PATH)
+df = df.fillna(-1)
 
 target = "seek_help_cleaned"
-drop_cols = ['Country', 'state', 'Gender_cleaned']
+drop_cols = ['Country', 'Gender_cleaned']
 X = df.drop(columns=[target] + drop_cols)
 y = df[target]
+# print(len(X)) - 21
 
 # CATEGORICAL AND NUMERIC
 
@@ -41,8 +48,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # PREPROCESSING : ONE HOT ENCODING
 
 preprocessor = ColumnTransformer(
-    transformers=[('cat', OneHotEncoder(handle_unknown='ignore', drop='first'), categorical_cols)
-                  ],
+    transformers=[('cat', OneHotEncoder(handle_unknown='ignore', drop='first'), categorical_cols)],
     remainder='passthrough'
 )
 
@@ -52,11 +58,9 @@ models = {
     "RandomForest_Balanced" : RandomForestClassifier(
         n_estimators=200, class_weight= 'balanced', random_state=42
     ),
-    # "XGBoost" : XGBClassifier(
-    #     use_label_encoder=False, eval_metric='mlogloss', random_state=42
-    # ),
+    "CategoricalNB": CategoricalNB(),
     "LogisticRegression": LogisticRegression(
-        max_iter=1000, class_weight='balanced', random_state=42
+        max_iter=5000, class_weight='balanced', random_state=42
     )
 }
 
@@ -92,10 +96,18 @@ for name, model in models.items():
     print(classification_report(y_test, y_pred))
     print("Confusion Matrix:\n", cm)
 
-    # Save model
+    # Save model - Pipeline
     model_path = f"models/{name}.joblib"
     joblib.dump(clf, model_path)
     print(f"✅ Model saved to: {model_path}")
+
+    # Save model - Core
+    if name in ("RandomForest_Balanced"):
+        core = extract_estimator_with_attr(model, "feature_importances_")
+        joblib.dump(core, os.path.join("models", f"{name}_core.joblib"))
+    elif name in ("LogisticRegression"):
+        core = extract_estimator_with_attr(model, "coef_")
+        joblib.dump(core, os.path.join("models", f"{name}_core.joblib"))
 
     # Save results
     results.append({
@@ -107,10 +119,34 @@ for name, model in models.items():
     })
 
 # SAVE MODEL PERFORMANCE
-
 results_df = pd.DataFrame(results)
 results_df.to_csv("models/model_performance_summary.csv", index=False)
-print("\n📄 Model performance summary saved to models/model_performance_summary.csv")
+print("\nModel performance summary saved to models/model_performance_summary.csv")
+
+print("\n=== VotingClassifier (RF + LR + CategoricalNB) ===")
+voting_clf = VotingClassifier(
+    estimators=[
+        ("rf", RandomForestClassifier(
+            n_estimators=200, class_weight='balanced', random_state=42
+        )),
+        ("lr", LogisticRegression(
+            max_iter=5000, class_weight='balanced', random_state=42
+        )),
+        ("nb", CategoricalNB())
+    ],
+    voting='soft'
+)
+
+voting_clf.fit(X_train, y_train)
+y_pred_voting = voting_clf.predict(X_test)
+
+print(classification_report(y_test, y_pred_voting))
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred_voting))
+
+model_path = f"models/voting_clf.joblib"
+joblib.dump(voting_clf, model_path)
+print(f"✅ Model saved to: {model_path}")
 
 # FEATURE IMPORTANCE PLOT
 
@@ -126,15 +162,6 @@ plt.bar(range(15), importances[indices[:15]], align='center')
 plt.xticks(range(15), [all_features[i] for i in indices[:15]], rotation=75)
 plt.title("Top 15 Feature Importances (Random Forest)")
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(save_folder, "RF_15_features.png"))
+plt.close()
 
-# # Model
-# model = RandomForestClassifier(n_estimators=200, random_state=42)
-# model.fit(X_train, y_train)
-#
-# # Predict and Evaluate
-# y_pred = model.predict(X_test)
-#
-# print(classification_report(y_test, y_pred))
-# print("Confustion Matrix:")
-# print(confusion_matrix(y_test, y_pred))

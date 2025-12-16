@@ -1,0 +1,16 @@
+Feature,Pretty,Importance
+cat__mental_health_interview_cleaned_1,mental_health_interview_cleaned = 1,0.0041134463060694265
+cat__phys_health_consequence_cleaned_1,phys_health_consequence_cleaned = 1,0.005111281479653267
+cat__leave_cleaned_5,leave_cleaned = 5,0.005705884934626918
+cat__self_employed_cleaned_1.0,self_employed_cleaned = 1.0,0.007223928865413049
+cat__leave_cleaned_4,leave_cleaned = 4,0.008718699416936558
+cat__obs_consequence_cleaned_1,obs_consequence_cleaned = 1,0.009799133803184711
+cat__work_interfere_cleaned_3.0,work_interfere_cleaned = 3.0,0.012023101782341896
+cat__coworkers_cleaned_1,coworkers_cleaned = 1,0.012264960405358396
+cat__phys_health_interview_cleaned_1,phys_health_interview_cleaned = 1,0.012581237570334032
+cat__mental_health_consequence_cleaned_1,mental_health_consequence_cleaned = 1,0.013397296421803193
+cat__work_interfere_cleaned_4.0,work_interfere_cleaned = 4.0,0.013533477310055457
+cat__phys_health_consequence_cleaned_3,phys_health_consequence_cleaned = 3,0.013656176120699779
+cat__mental_health_interview_cleaned_3,mental_health_interview_cleaned = 3,0.013805227624525367
+cat__tech_company_cleaned_1,tech_company_cleaned = 1,0.014057939219776773
+cat__work_interfere_cleaned_1.0,work_interfere_cleaned = 1.0,0.014212093734996717
